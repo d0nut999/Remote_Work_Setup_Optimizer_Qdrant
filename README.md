@@ -21,8 +21,6 @@ This system helps remote workers find the perfect home office setup within their
 - **Backend**: Python, FastAPI, Qdrant, sentence-transformers
 - **Frontend**: React, TypeScript, Tailwind CSS
 - **Vector DB**: Qdrant Cloud
-- **Data Processing**: Chonkie for text chunking
-- **Deployment**: Docker, Vercel/Netlify
 
 ## 🚀 Quick Start
 
@@ -88,3 +86,4 @@ npm start
 
 - [ ] **Week 1**: Backend API + Qdrant integration + Basic frontend
 - [ ] **Week 2**: UI polish + Demo data + Presentation prep
+
