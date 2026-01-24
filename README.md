@@ -26,8 +26,6 @@ This system helps remote workers find the perfect home office setup within their
 
 ## 🚀 Quick Start
 
-**👥 For Team Members**: Follow the [TEAM_SETUP_GUIDE.md](./TEAM_SETUP_GUIDE.md) for detailed, tested setup instructions.
-
 ### Prerequisites
 - Python 3.11+ (3.11 or 3.12 recommended)
 - Node.js 18+
@@ -90,10 +88,3 @@ npm start
 
 - [ ] **Week 1**: Backend API + Qdrant integration + Basic frontend
 - [ ] **Week 2**: UI polish + Demo data + Presentation prep
-
-## 📚 Documentation
-
-- [API Documentation](./docs/api.md)
-- [Frontend Guide](./frontend/README.md)
-- [Data Processing](./data/README.md)
-- [Deployment Guide](./docs/deployment.md)
