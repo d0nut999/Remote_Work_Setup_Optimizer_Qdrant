@@ -1,0 +1,112 @@
+[
+  {
+    "id": "desk_001",
+    "title": "IKEA BEKANT Desk",
+    "description": "Simple and functional desk perfect for home office. Clean lines and spacious surface for laptop and accessories.",
+    "price": 149.99,
+    "category": "desks",
+    "features": ["spacious surface", "cable management", "easy assembly", "modern design"],
+    "dimensions": {"width": 120, "height": 75},
+    "rating": 4.2,
+    "image": "https://example.com/bekant-desk.jpg"
+  },
+  {
+    "id": "desk_002",
+    "title": "FlexiSpot Standing Desk Converter",
+    "description": "Ergonomic standing desk converter that transforms any surface into a healthy workspace. Perfect for small spaces.",
+    "price": 299.99,
+    "category": "desks",
+    "features": ["height adjustable", "ergonomic", "space-saving", "dual monitor support"],
+    "dimensions": {"width": 90, "height": 50},
+    "rating": 4.6,
+    "image": "https://example.com/flexispot-converter.jpg"
+  },
+  {
+    "id": "chair_001",
+    "title": "Herman Miller Aeron Chair",
+    "description": "Premium ergonomic office chair with advanced PostureFit SL support. The gold standard for long coding sessions.",
+    "price": 1395.00,
+    "category": "chairs",
+    "features": ["ergonomic", "lumbar support", "breathable mesh", "adjustable arms"],
+    "dimensions": {"width": 68, "height": 104},
+    "rating": 4.8,
+    "image": "https://example.com/aeron-chair.jpg"
+  },
+  {
+    "id": "chair_002",
+    "title": "IKEA MARKUS Office Chair",
+    "description": "Affordable ergonomic office chair with high back support. Great value for money with 10-year warranty.",
+    "price": 229.00,
+    "category": "chairs",
+    "features": ["ergonomic", "high back", "mesh back", "adjustable height"],
+    "dimensions": {"width": 62, "height": 129},
+    "rating": 4.3,
+    "image": "https://example.com/markus-chair.jpg"
+  },
+  {
+    "id": "light_001",
+    "title": "BenQ ScreenBar Plus Monitor Light",
+    "description": "Innovative monitor light bar that provides perfect screen illumination without glare. Ideal for video calls and late-night coding.",
+    "price": 109.99,
+    "category": "lighting",
+    "features": ["no screen glare", "video call friendly", "USB powered", "adjustable brightness"],
+    "dimensions": {"width": 45, "height": 9},
+    "rating": 4.7,
+    "image": "https://example.com/benq-screenbar.jpg"
+  },
+  {
+    "id": "light_002",
+    "title": "Neewer Ring Light with Stand",
+    "description": "Professional ring light perfect for video calls and content creation. Adjustable brightness and color temperature.",
+    "price": 79.99,
+    "category": "lighting",
+    "features": ["video call friendly", "adjustable brightness", "color temperature control", "phone holder"],
+    "dimensions": {"width": 35, "height": 160},
+    "rating": 4.4,
+    "image": "https://example.com/neewer-ring-light.jpg"
+  },
+  {
+    "id": "monitor_001",
+    "title": "Dell UltraSharp U2720Q 27\" 4K Monitor",
+    "description": "Professional 4K monitor with excellent color accuracy. Perfect for coding, design work, and video calls.",
+    "price": 549.99,
+    "category": "monitors",
+    "features": ["4K resolution", "color accurate", "USB-C connectivity", "height adjustable"],
+    "dimensions": {"width": 61, "height": 52},
+    "rating": 4.6,
+    "image": "https://example.com/dell-u2720q.jpg"
+  },
+  {
+    "id": "monitor_002",
+    "title": "ASUS VA24EHE 24\" Full HD Monitor",
+    "description": "Affordable full HD monitor perfect for basic productivity work. Great value for budget-conscious setups.",
+    "price": 89.99,
+    "category": "monitors",
+    "features": ["full HD", "affordable", "eye care", "flicker-free"],
+    "dimensions": {"width": 54, "height": 42},
+    "rating": 4.2,
+    "image": "https://example.com/asus-va24ehe.jpg"
+  },
+  {
+    "id": "accessory_001",
+    "title": "Logitech MX Master 3 Wireless Mouse",
+    "description": "Premium wireless mouse designed for productivity. Perfect for long coding sessions with ergonomic design.",
+    "price": 99.99,
+    "category": "accessories",
+    "features": ["ergonomic", "wireless", "long battery life", "precision scrolling"],
+    "dimensions": {"width": 8.4, "height": 5.1},
+    "rating": 4.7,
+    "image": "https://example.com/mx-master-3.jpg"
+  },
+  {
+    "id": "accessory_002",
+    "title": "Sony WH-1000XM4 Noise Canceling Headphones",
+    "description": "Industry-leading noise canceling headphones perfect for focus and video calls in shared spaces.",
+    "price": 349.99,
+    "category": "accessories",
+    "features": ["noise canceling", "wireless", "long battery life", "excellent audio quality"],
+    "dimensions": {"width": 25, "height": 30},
+    "rating": 4.8,
+    "image": "https://example.com/sony-wh1000xm4.jpg"
+  }
+]
