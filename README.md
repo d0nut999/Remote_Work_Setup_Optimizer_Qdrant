@@ -93,6 +93,7 @@ QDRANT_API_KEY=your-actual-api-key-from-qdrant-dashboard
 ```
 
 ### Initialize Qdrant with Sample Data:
+Download the products data: https://drive.google.com/file/d/1D7TPWjhgIaymNRAzGiuNXXqqIR-ffuyE/view?usp=sharing
 ```bash
 # Run the setup script
 cd ../data
@@ -215,4 +216,5 @@ The frontend will be available at: http://localhost:3000
 4. **Document**: Add comments and update docs as you go
 
 Good luck with your hackathon! 🚀
+
 
