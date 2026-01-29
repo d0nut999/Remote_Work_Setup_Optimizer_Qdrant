@@ -30,6 +30,7 @@ remote-work-optimizer/
 ├── data/                  # Data processing and samples
 │   ├── products.json      # Product data for Qdrant
 │   └── setup_qdrant.py    # Qdrant initialization script
+│   └── upload_batches.py  # Uploads products to Qdrant
 ├── .gitignore             # Files to exclude from git
 └── docs/                  # Documentation and specs
 ```
@@ -96,7 +97,7 @@ QDRANT_API_KEY=your-actual-api-key-from-qdrant-dashboard
 # Run the setup script
 cd ../data
 python setup_qdrant.py
-python convert_csv_to_json.py
+python upload_batches.py
 ```
 
 These script will:
@@ -214,3 +215,4 @@ The frontend will be available at: http://localhost:3000
 4. **Document**: Add comments and update docs as you go
 
 Good luck with your hackathon! 🚀
+
