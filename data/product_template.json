@@ -1,7 +1,6 @@
 {
   "id": "product_id_here",
   "title": "Product Name Here",
-  "description": "Detailed description of the product and its benefits for remote work",
   "price": 99.99,
   "category": "desks|chairs|lighting|monitors|accessories",
   "features": ["feature1", "feature2", "feature3", "feature4"],
@@ -16,4 +15,5 @@
 // - features: 3-5 key features that help with search
 // - dimensions: Only width and height in cm
 // - rating: Between 1.0 and 5.0
+
 // - image: Can be placeholder URL for now
