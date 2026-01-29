@@ -72,6 +72,20 @@ class QdrantService:
                 logger.info(f"✅ Created collection: {self.collection_name}")
             else:
                 logger.info(f"✅ Collection already exists: {self.collection_name}")
+            
+            # Ensure payload indexes exist for fields used in filters.
+            # This avoids 400 errors like:
+            # "Index required but not found for \"price\" of one of the following types: [float, integer]"
+            try:
+                self.client.create_payload_index(
+                    collection_name=self.collection_name,
+                    field_name="price",
+                    field_schema="float"
+                )
+                logger.info("✅ Created payload index for 'price'")
+            except Exception as index_err:
+                # If index already exists or index creation is unsupported, log at debug level
+                logger.debug(f"ℹ️ Skipping 'price' index creation: {index_err}")
                 
         except Exception as e:
             logger.error(f"❌ Failed to ensure collection exists: {e}")
@@ -184,29 +198,69 @@ class QdrantService:
     ) -> List[Dict[str, Any]]:
         """Search for products using vector similarity"""
         try:
-            # Generate query embedding
+            # Always use our own embeddings and the core search/query_points APIs,
+            # so we don't depend on FastEmbed's `query` shortcut or vector names.
             query_embedding = self.generate_embedding(query)
-            
-            # Build filter conditions
             filter_conditions = self._build_filter_conditions(filters) if filters else None
+
+            if hasattr(self.client, "search"):
+                # Older/high-level client API that returns a list of ScoredPoint-like objects
+                search_result = self.client.search(
+                    collection_name=self.collection_name,
+                    query_vector=query_embedding,
+                    query_filter=filter_conditions,
+                    limit=limit,
+                    with_payload=True,
+                    with_vectors=False
+                )
+                hits = search_result
+            elif hasattr(self.client, "search_points"):
+                # Newer explicit points API, returns a QueryResponse-like object
+                search_result = self.client.search_points(
+                    collection_name=self.collection_name,
+                    query=query_embedding,
+                    query_filter=filter_conditions,
+                    limit=limit,
+                    with_payload=True,
+                    with_vectors=False
+                )
+                hits = getattr(search_result, "points", search_result)
+            elif hasattr(self.client, "query_points"):
+                # Fallback to query_points if search/search_points are not available
+                search_result = self.client.query_points(
+                    collection_name=self.collection_name,
+                    query=query_embedding,
+                    query_filter=filter_conditions,
+                    limit=limit,
+                    with_payload=True,
+                    with_vectors=False
+                )
+                hits = getattr(search_result, "points", search_result)
+            else:
+                raise AttributeError(
+                    "QdrantClient instance has neither 'search', 'search_points', "
+                    "nor 'query_points' methods. Please check the installed qdrant-client version."
+                )
             
-            # Search in Qdrant using the correct method
-            search_result = self.client.search(
-                collection_name=self.collection_name,
-                query_vector=query_embedding,
-                query_filter=filter_conditions,
-                limit=limit,
-                with_payload=True,
-                with_vectors=False
-            )
-            
-            # Format results
+            # Format results. Handle both Record-like objects and tuple-based results.
             results = []
-            for hit in search_result:
+            for hit in hits:
+                # Some APIs may return (payload, score) or similar tuples
+                if isinstance(hit, tuple) and len(hit) >= 2:
+                    payload, score = hit[0], hit[1]
+                    hit_id = payload.get("id") if isinstance(payload, dict) else None
+                else:
+                    payload = getattr(hit, "payload", None)
+                    score = getattr(hit, "score", None)
+                    hit_id = getattr(hit, "id", None)
+
+                if payload is None:
+                    continue
+
                 result = {
-                    "product": hit.payload,
-                    "relevance_score": hit.score,
-                    "id": hit.id
+                    "product": payload,
+                    "relevance_score": float(score) if score is not None else 0.0,
+                    "id": hit_id
                 }
                 results.append(result)
             
