@@ -12,10 +12,12 @@ qdrant-client>=1.16.0
 
 # AI/ML for Embeddings
 sentence-transformers>=2.0.0
+numpy>=1.21.0
 
 # Essential Utilities
 python-dotenv>=1.0.0
 requests>=2.28.0
 
-# Note: If you get build errors with Python 3.13, use:
-# pip install --no-build-isolation -r requirements.txt
+# Note: sentence-transformers will automatically install torch as a dependency
+# If you get build errors with Python 3.13, use Python 3.11 or 3.12 instead
+# Or try: pip install --no-build-isolation -r requirements.txt
