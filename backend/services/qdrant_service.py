@@ -47,10 +47,10 @@ class QdrantService:
             # Create collection if it doesn't exist
             await self._ensure_collection_exists()
             
-            logger.info("✅ Qdrant service initialized successfully")
+            logger.info(" Qdrant service initialized successfully")
             
         except Exception as e:
-            logger.error(f"❌ Failed to initialize Qdrant service: {e}")
+            logger.error(f" Failed to initialize Qdrant service: {e}")
             raise
     
     async def _ensure_collection_exists(self):
@@ -69,9 +69,9 @@ class QdrantService:
                         distance=Distance.COSINE
                     )
                 )
-                logger.info(f"✅ Created collection: {self.collection_name}")
+                logger.info(f" Created collection: {self.collection_name}")
             else:
-                logger.info(f"✅ Collection already exists: {self.collection_name}")
+                logger.info(f" Collection already exists: {self.collection_name}")
             
             # Ensure payload indexes exist for fields used in filters.
             # This avoids 400 errors like:
@@ -82,13 +82,13 @@ class QdrantService:
                     field_name="price",
                     field_schema="float"
                 )
-                logger.info("✅ Created payload index for 'price'")
+                logger.info(" Created payload index for 'price'")
             except Exception as index_err:
                 # If index already exists or index creation is unsupported, log at debug level
-                logger.debug(f"ℹ️ Skipping 'price' index creation: {index_err}")
+                logger.debug(f" Skipping 'price' index creation: {index_err}")
                 
         except Exception as e:
-            logger.error(f"❌ Failed to ensure collection exists: {e}")
+            logger.error(f" Failed to ensure collection exists: {e}")
             raise
     
     def generate_embedding(self, text: str) -> List[float]:
@@ -126,11 +126,11 @@ class QdrantService:
                 points=[point]
             )
             
-            logger.info(f"✅ Added product: {product_data['id']}")
+            logger.info(f" Added product: {product_data['id']}")
             return product_data["id"]
             
         except Exception as e:
-            logger.error(f"❌ Failed to add product {product_data.get('id', 'unknown')}: {e}")
+            logger.error(f" Failed to add product {product_data.get('id', 'unknown')}: {e}")
             raise
     
     async def add_products_batch(self, products: List[Dict[str, Any]]) -> List[str]:
@@ -165,7 +165,7 @@ class QdrantService:
             )
             
             product_ids = [p["id"] for p in products]
-            logger.info(f"✅ Added {len(products)} products in batch")
+            logger.info(f" Added {len(products)} products in batch")
             return product_ids
             
         except Exception as e:
@@ -264,11 +264,11 @@ class QdrantService:
                 }
                 results.append(result)
             
-            logger.info(f"✅ Found {len(results)} products for query: '{query}'")
+            logger.info(f" Found {len(results)} products for query: '{query}'")
             return results
             
         except Exception as e:
-            logger.error(f"❌ Search failed for query '{query}': {e}")
+            logger.error(f" Search failed for query '{query}': {e}")
             # Return empty results instead of raising exception for now
             return []
     
@@ -351,3 +351,4 @@ class QdrantService:
                 "connected": False,
                 "error": str(e)
             }
+
