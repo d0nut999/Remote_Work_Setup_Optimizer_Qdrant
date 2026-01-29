@@ -48,9 +48,9 @@ async def startup_event():
     """Initialize services on startup"""
     try:
         await qdrant_service.initialize()
-        print("✅ Qdrant service initialized successfully")
+        print(" Qdrant service initialized successfully")
     except Exception as e:
-        print(f"❌ Failed to initialize Qdrant service: {e}")
+        print(f" Failed to initialize Qdrant service: {e}")
 
 @app.get("/")
 async def root():
@@ -655,3 +655,4 @@ if __name__ == "__main__":
         port=int(os.getenv("API_PORT", 8000)),
         reload=os.getenv("DEBUG", "False").lower() == "true"
     )
+
